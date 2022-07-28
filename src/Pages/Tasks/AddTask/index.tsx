@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Task } from "../type-task";
+// import { Task } from "../type-task";
 
 
-const AddTask:FC<Task> =()=>{
+const AddTask:FC =()=>{
     return(
     <>
     <h3>Add task</h3>

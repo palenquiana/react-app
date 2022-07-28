@@ -1,1 +1,1 @@
-export { Tasks } from './Tasks'
+export { Main, AddTask } from './Tasks'
