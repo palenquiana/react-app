@@ -1,15 +1,24 @@
-import { FC } from 'react';
 import React from 'react';
+import { FC } from 'react';
+import { Card } from './type-card'
 
-const Card: FC = () =>{
+
+const Card: FC<Card> = ( {children}) =>{
     return(
-    <div>
-        Card
-    </div>
+        <>
+        <div>
+            
+            {children}
 
-)
+        </div>
+        
+
+        </>
+
+
+
+    )
 
 
 }
-
 export { Card }
