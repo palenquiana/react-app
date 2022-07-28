@@ -1,4 +1,4 @@
-const addTask = async (newTask)=>{
+const addTask = async (newTask: any)=>{
     const option = {
         method: 'POST',
         headers: {
@@ -9,7 +9,7 @@ const addTask = async (newTask)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/tasks.json',option)
 }
 
-const deleteTask = async (task) => {
+const deleteTask = async (task: any) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -29,7 +29,7 @@ const getTasks = async () => {
   }
 
 
-const modifyTask = async (task, modifiedTask) => {
+const modifyTask = async (task: any, modifiedTask: any) => {
   const option = {
     method: 'PATCH',
     headers: {
@@ -43,4 +43,4 @@ const modifyTask = async (task, modifiedTask) => {
 
 
 
-  export { addTask, getTasks, modifyTask, deleteTask }
+export { addTask, getTasks, modifyTask, deleteTask }

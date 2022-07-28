@@ -2,23 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-
+import { Navbar } from './components';
+import { Categories, Tasks, Users } from './Pages';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    {/* <Nav /> */}
+    <Navbar />
     <Routes>
-      {/* <Route path="/" element={<App />}>
-        <Route index element={<Task />} />
-        <Route path="teams" element={<Teams />}>
-          <Route path=":teamId" element={<Team />} />
-          <Route path="new" element={<NewTeamForm />} />
-          <Route index element={<LeagueStandings />} /> */}
-        {/* </Route>
-      </Route> */}
+      <Route path="/" element={<App />}>
+        <Route index element={<Tasks />}/>
+          {/* <Route path='/tasks/add'></Route> 
+          <Route path='/tasks/edit'></Route> */}
+        <Route path="categories" element={<Categories />}/>
+        <Route path="users" element={<Users />} /> 
+      </Route>
     </Routes>
   </BrowserRouter>
 );

@@ -1,4 +1,4 @@
-const addUser = async (newUser)=>{
+const addUser = async (newUser: any)=>{
     const option = {
         method: 'POST',
         headers: {
@@ -9,7 +9,7 @@ const addUser = async (newUser)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/users.json',option)
 }
 
-const deleteUser = async (user) => {
+const deleteUser = async (user: any) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -29,7 +29,7 @@ const getUsers = async () => {
   }
 
 
-const modifyUser = async (user, modifiedUser) => {
+const modifyUser = async (user: any, modifiedUser: any) => {
   const option = {
     method: 'PATCH',
     headers: {
@@ -43,4 +43,4 @@ const modifyUser = async (user, modifiedUser) => {
 
 
 
-  export { addUser, getUsers, modifyUser, deleteUser }
+export { addUser, getUsers, modifyUser, deleteUser }
