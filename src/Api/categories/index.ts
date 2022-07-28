@@ -1,4 +1,4 @@
-const addCategory = async (newCategory)=>{
+const addCategory = async (newCategory: any)=>{
     const option = {
         method: 'POST',
         headers: {
@@ -9,7 +9,7 @@ const addCategory = async (newCategory)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/categories.json',option)
 }
 
-const deleteCategory = async (category) => {
+const deleteCategory = async (category: any) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -29,7 +29,7 @@ const getCategories = async () => {
   }
 
 
-const modifyCategory = async (category, modifiedCategory) => {
+const modifyCategory = async (category: any, modifiedCategory: any) => {
   const option = {
     method: 'PATCH',
     headers: {
