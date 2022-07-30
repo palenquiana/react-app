@@ -11,15 +11,15 @@ const AddTask:FC =()=>{
                 <div className="d-flex flex-column align-items-center ">
                     <div>
                         <label htmlFor="title" className="fw-bold">Título</label>
-                        <input type="text" />
+                        <input type="text" className="form-control"/>
                     </div>
                     <div>
                         <label htmlFor="date" className="fw-bold"> Fecha</label>
-                        <input type="date" />
+                        <input type="date" className="form-control" />
                     </div>
                     <div>
                         <label htmlFor="description" className="fw-bold">Descripción</label>
-                        <textarea name="" id="" placeholder="Agregá una descripción" ></textarea>
+                        <textarea name="" id="" placeholder="Agregá una descripción" className="form-control"></textarea>
                     </div>
                     <div> 
                         
