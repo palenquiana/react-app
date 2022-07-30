@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-export type Card = {
+export type Prop = {
     children : ReactNode,
     
 }

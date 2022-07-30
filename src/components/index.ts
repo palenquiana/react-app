@@ -1,2 +1,3 @@
 export { Navbar } from "./Common/Navbar"
-export { Card } from './Card'
+export { Card } from './Common/Card'
+export { Button } from './Common/Button'
