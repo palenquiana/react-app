@@ -1,46 +1,56 @@
 import { FC } from "react";
-// import { Task } from "../type-task";
+
 
 
 const AddTask:FC =()=>{
     return(
     <>
-    <h3>Add task</h3>
-    <form>
-        <div>
-            <label htmlFor="title">Título</label>
-            <input type="text" />
+        <div className="card card-form primary-form container p-1">
+            <h3 className="text-center">Agregar tareas</h3>
+            <form>
+                <div className="d-flex flex-column align-items-center ">
+                    <div>
+                        <label htmlFor="title" className="fw-bold">Título</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="date" className="fw-bold"> Fecha</label>
+                        <input type="date" />
+                    </div>
+                    <div>
+                        <label htmlFor="description" className="fw-bold">Descripción</label>
+                        <textarea name="" id="" placeholder="Agregá una descripción" ></textarea>
+                    </div>
+                    <div> 
+                        
+
+                    </div>
+                    <div>
+                        <label htmlFor="" className="fw-bold">Estado</label>
+                        <div>
+                            <input type="radio" name="pendiente" id="" className="me-1"/>
+                            <label htmlFor="pendiente">Pendiente</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="enProceso" id="" className="me-1"/>
+                            <label htmlFor="enProceso">En proceso</label>                       
+                        </div>
+                        <div>
+                            <input type="radio" name="realizado" id="" className="me-1"/>
+                            <label htmlFor="realizado">Realizado</label>   
+                        </div>
+
+                    </div>
+
+                </div>
+               
+
+            </form>
+
         </div>
-        <div>
-            <label htmlFor="date"> Fecha</label>
-            <input type="date" />
-        </div>
-        <div>
-            <label htmlFor="">Estado</label>
-            <div>
-                <label htmlFor="pendiente">Pendiente</label>
-                <input type="radio" name="pendiente" id="" />
-            </div>
-
-            <div>
-                <label htmlFor="enProceso">En proceso</label>
-                <input type="radio" name="enProceso" id="" />
-            </div>
-            <div>
-                <label htmlFor="realizado">Realizado</label>
-                <input type="radio" name="realizado" id="" />
-            </div>
-
-       
-
-        </div>
-
-       
-        
-         
-
-
-    </form>
+     
+    
     
     
     </>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FC } from 'react';
-import { Card } from './type-card'
+import { Prop } from './type-card'
 
 
-const Card: FC<Card> = ( {children}) =>{
+const Card: FC<Prop> = ( {children}) =>{
     return(
         <>
         <div>
