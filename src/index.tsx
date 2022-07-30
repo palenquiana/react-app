@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Navbar } from './Components';
-import { ViewTasks, Users, AddTask, OutletTasks } from './Pages';
+import { ViewTasks, AddTask, OutletTasks } from './Pages';
 import { AddCategory, OutletCategories, ViewCategories } from './Pages/Categories';
+import { ViewUser,AddUser,OutletUser } from './Pages' 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,7 +25,10 @@ root.render(
           <Route path='add' element={<AddCategory />} /> 
         </Route>
 
-        <Route path="users" element={<Users />} /> 
+        <Route path="user" element={<OutletUser />}> 
+          <Route index element={<ViewUser />}/>
+          <Route path='add' element={<AddUser />} /> 
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>
