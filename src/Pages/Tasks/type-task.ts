@@ -5,5 +5,5 @@ export type Task = {
     user: string,
     category: string,
     state: "pending" | "doing" | "done" 
-    
+    idDB: string,
 }

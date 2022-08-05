@@ -1,4 +1,6 @@
-const addTask = async (newTask: any)=>{
+import { Task } from "../../Pages/Tasks/type-task"
+
+const addTask = async (newTask: Task)=>{
     const option = {
         method: 'POST',
         headers: {
@@ -9,7 +11,7 @@ const addTask = async (newTask: any)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/tasks.json',option)
 }
 
-const deleteTask = async (task: any) => {
+const deleteTask = async (task: Task) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -29,7 +31,7 @@ const getTasks = async () => {
   }
 
 
-const modifyTask = async (task: any, modifiedTask: any) => {
+const modifyTask = async (task: Task, modifiedTask: Task) => {
   const option = {
     method: 'PATCH',
     headers: {
