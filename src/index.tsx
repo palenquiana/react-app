@@ -6,6 +6,7 @@ import { Navbar } from './Components';
 import { ViewTasks, AddTask, OutletTasks } from './Pages';
 import { AddCategory, OutletCategories, ViewCategories } from './Pages/Categories';
 import { ViewUser,AddUser,OutletUser } from './Pages' 
+import { EditTask } from './Pages/Tasks';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +18,8 @@ root.render(
       <Route path="/" element={<App />}> 
         <Route path='' element={<OutletTasks />}> 
           <Route index element={<ViewTasks />}/> 
-          <Route path='tasks/add' element={<AddTask/>} /> 
+          <Route path='tasks/add' element={<AddTask/>} />
+          <Route path='tasks/edit' element={<EditTask/>} /> 
         </Route>  
           {/* <Route path='/tasks/edit'></Route>  */}
         <Route path="categories" element={<OutletCategories />}> 
