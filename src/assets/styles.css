@@ -23,5 +23,8 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+}
 
+.task {
+    border: 1px solid rgb(185, 185, 185)
 }

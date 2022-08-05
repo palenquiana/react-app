@@ -1,20 +1,51 @@
-import { FC } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "../../../Components"
+import { getTasks, mapToArray } from "../../../Api"
+import { Button, Card } from "../../../Components"
+import { Task } from "../type-task"
+import '../../../Assets/styles.css'
 
 
-const ViewTasks:FC =() => {
+
+const ViewTasks = () => {
 
     const navigate = useNavigate()
 
-    return( 
+    const [tasks, setTasks] = useState<Task[]>([]);
 
-        <>
-            <Button text="Agregar tareas" onClick={()=>navigate('/tasks/add', {replace:true})} type="button" className="btn-dark" />
-            
-        </>
-       
+    const loadCards = async () => {
+        if(tasks.length === 0) {       
+            const response = await getTasks();
+            setTasks(mapToArray(response))
+        }
+    }
+
+    loadCards()
+
+    return(
+        <div className="container">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                { tasks.map(({description, category, user, idDB, title}) => {
+                    return (                       
+                        <div className="col">
+                            <Card className="task" key={idDB} id={idDB}>
+                                <ul className="list-group">
+                                    <li className="list-group-item">{title}</li>
+                                    <li className="list-group-item">{description}</li>
+                                    <li className="list-group-item">Categoria: {category}</li>
+                                    <li className="list-group-item">Usuario: {user}</li>
+                                </ul>  
+                            </Card>
+                    </div> 
+                    )
+                })}
+            </div>
+            <Button text="Agregar tareas" onClick={()=>navigate('/tasks/add', {replace:true})} type="button" className="btn-dark m-4" />
+      </div>  
+        
     )
-
 }
+
+
+
 export { ViewTasks }

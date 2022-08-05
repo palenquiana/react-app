@@ -3,16 +3,15 @@ import { FC } from 'react';
 import { Prop } from './type-card'
 
 
-const Card: FC<Prop> = ( {children}) =>{
+const Card: FC<Prop> = ( {children, className, id}) =>{
     return(
         <>
-        <div>
-            
-            {children}
-
-        </div>
-        
-
+            <div className={`card ${className}`} id={id}>
+                {/* agregamos un card title? */}
+                <div className='card-body'>
+                    {children}    
+                </div>
+            </div>
         </>
 
 
