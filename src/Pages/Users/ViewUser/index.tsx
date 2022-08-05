@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddUser } from '../AddUser';
+import { AddUser } from '../Add';
 
 const ViewUser = () => {
 
