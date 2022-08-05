@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Navbar } from './Components';
 import { ViewTasks, AddTask, OutletTasks, EditTask } from './Pages';
-import { AddCategory, OutletCategories, ViewCategories } from './Pages/Categories';
+import { AddCategory, EditCategory, OutletCategories, ViewCategories } from './Pages/Categories';
 import { ViewUser,AddUser,OutletUser,EditUser } from './Pages' 
 
 
@@ -24,6 +24,7 @@ root.render(
         <Route path="categories" element={<OutletCategories />}> 
           <Route index element={<ViewCategories />}/>
           <Route path='add' element={<AddCategory />} /> 
+          <Route path='edit' element={<EditCategory />} /> 
         </Route>
 
         <Route path="user" element={<OutletUser />}> 
