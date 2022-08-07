@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getTasks, mapToArray } from "../../../Api"
+import { mapToArray, tasksApi } from "../../../Api"
 import { Button, Card } from "../../../Components"
 import { Task } from "../type-task"
 import '../../../Assets/styles.css'
@@ -15,7 +15,7 @@ const ViewTasks = () => {
 
     const loadCards = async () => {
         if(tasks.length === 0) {       
-            const response = await getTasks();
+            const response = await tasksApi.getAll();
             setTasks(mapToArray(response))
         }
     }
