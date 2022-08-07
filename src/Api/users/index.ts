@@ -1,4 +1,4 @@
-const addUser = async (newUser: any)=>{
+const add = async (newUser: any)=>{
     const option = {
         method: 'POST',
         headers: {
@@ -9,7 +9,7 @@ const addUser = async (newUser: any)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/users.json',option)
 }
 
-const deleteUser = async (user: any) => {
+const remove = async (user: any) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -22,14 +22,14 @@ const deleteUser = async (user: any) => {
 
 
 
-const getUsers = async () => {
+const getAll = async () => {
     const response = await fetch('https://react-app-29176-default-rtdb.firebaseio.com/users.json');
     const data = await response.json();
     return data;    
   }
 
 
-const modifyUser = async (user: any, modifiedUser: any) => {
+const modify = async (user: any, modifiedUser: any) => {
   const option = {
     method: 'PATCH',
     headers: {
@@ -43,4 +43,4 @@ const modifyUser = async (user: any, modifiedUser: any) => {
 
 
 
-export { addUser, getUsers, modifyUser, deleteUser }
+export const usersApi = { add, getAll, modify, remove }
