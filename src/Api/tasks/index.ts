@@ -1,11 +1,10 @@
 import { Task } from "../../Pages/Tasks/type-task"
+import { mapToArray } from "../helpers"
 
 const add = async (newTask: Task)=>{
-    const option = {
+
+    const option: RequestInit = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(newTask)
     }
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/tasks.json',option)
@@ -27,8 +26,10 @@ const remove = async (task: Task) => {
 const getAll = async () => {
     const response = await fetch('https://react-app-29176-default-rtdb.firebaseio.com/tasks.json');
     const data = await response.json();
-    return data;    
+    return mapToArray(data);    
   }
+
+
 
 
 const modify = async (task: Task, modifiedTask: Task) => {

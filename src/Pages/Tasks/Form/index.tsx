@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Button } from "../../../Components"
 import { Props } from '../../Form/type'
 
-const AddEditTask:FC<Props>= ({title}) =>{
+const AddEditTask:FC<Props>= ({title, taskTitle}) =>{
     return(
         <>
               
@@ -12,7 +12,7 @@ const AddEditTask:FC<Props>= ({title}) =>{
                     <div className="d-flex flex-column align-items-center ">
                         <div>
                             <label htmlFor="title" className="fw-bold">Título</label>
-                            <input type="text" className="form-control"/>
+                            <input type="text" className="form-control" value={taskTitle}/>
                         </div>
                         <div>
                             <label htmlFor="date" className="fw-bold"> Fecha</label>

@@ -1,11 +1,10 @@
+import { mapToArray } from "../helpers"
+
 const add = async (newCategory: any)=>{
-    const option = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newCategory)
-    }
+    const option: RequestInit = {
+    method: 'POST',
+    body: JSON.stringify(newCategory)
+  }
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/categories.json',option)
 }
 
@@ -25,7 +24,7 @@ const remove = async (category: any) => {
 const getAll = async () => {
     const response = await fetch('https://react-app-29176-default-rtdb.firebaseio.com/categories.json');
     const data = await response.json();
-    return data;    
+    return mapToArray(data);    
   }
 
 
