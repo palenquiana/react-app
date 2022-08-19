@@ -1,14 +1,10 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import App from "./App";
 import { Navbar } from "./Components";
-import { ViewTasks, OutletTasks } from "./Pages";
-import {
-  OutletCategories,
-  SaveCategory,
-  ViewCategories,
-} from "./Pages/Categories";
-import { ViewUser, OutletUser } from "./Pages";
+import { ViewTasks } from "./Pages";
+import { ViewCategories } from "./Pages/Categories";
+import { ViewUser } from "./Pages";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,17 +14,15 @@ root.render(
     <Navbar />
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="" element={<OutletTasks />}>
+        <Route path="" element={<Outlet />}>
           <Route index element={<ViewTasks />} />
         </Route>
 
-        <Route path="categories" element={<OutletCategories />}>
+        <Route path="categories" element={<Outlet />}>
           <Route index element={<ViewCategories />} />
-          <Route path="save" element={<SaveCategory />} />
-          <Route path="save/:slug" element={<SaveCategory />} />
         </Route>
 
-        <Route path="user" element={<OutletUser />}>
+        <Route path="user" element={<Outlet />}>
           <Route index element={<ViewUser />} />
         </Route>
       </Route>

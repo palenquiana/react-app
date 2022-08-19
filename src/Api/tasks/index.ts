@@ -14,7 +14,7 @@ const addTask = async (newTask: Task) => {
   );
 };
 
-const deleteTask = async (task: Task) => {
+const remove = async (task: Task) => {
   const option = {
     method: "DELETE",
     headers: {
@@ -49,5 +49,3 @@ const modifyTask = async (task: Task, modifiedTask: Task) => {
     option
   );
 };
-
-export { addTask, getTasks, modifyTask, deleteTask };

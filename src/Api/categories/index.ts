@@ -1,11 +1,8 @@
-import { Category } from "../../Type";
+import { mapToArray } from "../helpers";
 
-const addCategory = async (newCategory: Category) => {
-  const option = {
+const add = async (newCategory: any) => {
+  const option: RequestInit = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify(newCategory),
   };
   await fetch(
@@ -14,7 +11,7 @@ const addCategory = async (newCategory: Category) => {
   );
 };
 
-const deleteCategory = async (category: Category) => {
+const remove = async (category: any) => {
   const option = {
     method: "DELETE",
     headers: {
@@ -28,21 +25,21 @@ const deleteCategory = async (category: Category) => {
   );
 };
 
-const getCategories = async () => {
+const getAll = async () => {
   const response = await fetch(
     "https://react-app-29176-default-rtdb.firebaseio.com/categories.json"
   );
   const data = await response.json();
-  return data;
+  return mapToArray(data);
 };
 
-const saveCategory = async (category: Category | undefined, slug: string) => {
+const modify = async (category: any, modifiedCategory: any) => {
   const option = {
-    method: slug ? "PATCH" : "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(category),
+    body: JSON.stringify(modifiedCategory),
   };
   await fetch(
     `https://react-app-29176-default-rtdb.firebaseio.com/categories/${category}.json`,
@@ -50,4 +47,4 @@ const saveCategory = async (category: Category | undefined, slug: string) => {
   );
 };
 
-export { addCategory, getCategories, saveCategory, deleteCategory };
+export const categoriesApi = { add, getAll, modify, remove };
