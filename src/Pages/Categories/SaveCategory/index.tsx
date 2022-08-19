@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useParams } from "react-router-dom";
-import { saveCategory } from "../../../Api/categories";
+import { categoriesApi } from "../../../Api/categories";
 import { Button } from "../../../Components";
 import { Category } from "../../../Type";
 
@@ -11,7 +11,9 @@ const SaveCategory = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    slug ? saveCategory(category, "PATCH") : saveCategory(category, "POST");
+    slug
+      ? categoriesApi.saveCategory(category, "PATCH")
+      : categoriesApi.saveCategory(category, "POST");
   };
 
   return (
