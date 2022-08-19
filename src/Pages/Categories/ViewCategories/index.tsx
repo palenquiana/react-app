@@ -1,10 +1,10 @@
-import { AddCategory } from "../AddCategory"
+import { SaveCategory } from "../SaveCategory";
 
 const ViewCategories = () => {
-    return(
-        <>
-            <AddCategory/>
-        </>
-    )
-}
-export {ViewCategories } 
+  return (
+    <>
+      <SaveCategory />
+    </>
+  );
+};
+export { ViewCategories };

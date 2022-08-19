@@ -1,13 +1,7 @@
-import React from 'react';
-import { AddUser } from '../Add';
+import React from "react";
 
 const ViewUser = () => {
+  return <div className="page users"></div>;
+};
 
-    return (
-        <div className="page users">
-            <AddUser />
-        </div>
-    )
-}
-
-export { ViewUser }
+export { ViewUser };

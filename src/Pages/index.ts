@@ -1,5 +1,5 @@
-export { ViewTasks, AddTask,EditTask } from './Tasks'
-export { ViewUser,AddUser,EditUser } from "./Users"
-export { Register } from "./Register"
-export { Login } from "./Login"
-export { AddCategory,ViewCategories,EditCategory } from "./Categories"
+export { ViewTasks } from "./Tasks";
+export { ViewUser } from "./Users";
+export { Register } from "./Register";
+export { Login } from "./Login";
+export { ViewCategories } from "./Categories";
