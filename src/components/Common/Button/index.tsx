@@ -3,7 +3,7 @@ import { FC } from "react"
 
 type Props= {
     text: string,
-    onClick: () => void,
+    onClick?: () => void,
     className: string
     type: 'reset' | 'button' | 'submit'
 }

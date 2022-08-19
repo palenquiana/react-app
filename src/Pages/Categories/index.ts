@@ -1,4 +1,3 @@
-export { AddCategory } from './AddCategory'
-export { ViewCategories } from './ViewCategories'
-export { OutletCategories } from './Outlet'
-export { EditCategory } from './Edit'
+export { SaveCategory } from "./SaveCategory";
+export { ViewCategories } from "./ViewCategories";
+export { OutletCategories } from "./Outlet";

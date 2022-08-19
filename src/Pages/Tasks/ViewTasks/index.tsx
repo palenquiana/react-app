@@ -1,51 +1,50 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { getTasks, mapToArray } from "../../../Api"
-import { Button, Card } from "../../../Components"
-import { Task } from "../type-task"
-import '../../../Assets/styles.css'
-
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getTasks, mapToArray } from "../../../Api";
+import { Button, Card } from "../../../Components";
+import "../../../Assets/styles.css";
+import { Task } from "../../../Type";
 
 const ViewTasks = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-    const [tasks, setTasks] = useState<Task[]>([]);
-
-    const loadCards = async () => {
-        if(tasks.length === 0) {       
-            const response = await getTasks();
-            setTasks(mapToArray(response))
-        }
+  const loadCards = async () => {
+    if (tasks.length === 0) {
+      const response = await getTasks();
+      setTasks(mapToArray(response));
     }
+  };
 
-    loadCards()
+  loadCards();
 
-    return(
-        <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-                { tasks.map(({description, category, user, idDB, title}) => {
-                    return (                       
-                        <div className="col">
-                            <Card className="task" key={idDB} id={idDB}>
-                                <ul className="list-group">
-                                    <li className="list-group-item">{title}</li>
-                                    <li className="list-group-item">{description}</li>
-                                    <li className="list-group-item">Categoria: {category}</li>
-                                    <li className="list-group-item">Usuario: {user}</li>
-                                </ul>  
-                            </Card>
-                    </div> 
-                    )
-                })}
+  return (
+    <div className="container">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {tasks.map(({ description, category, user, idDB, title }) => {
+          return (
+            <div className="col">
+              <Card className="task" key={idDB} id={idDB}>
+                <ul className="list-group">
+                  <li className="list-group-item">{title}</li>
+                  <li className="list-group-item">{description}</li>
+                  <li className="list-group-item">Categoria: {category}</li>
+                  <li className="list-group-item">Usuario: {user}</li>
+                </ul>
+              </Card>
             </div>
-            <Button text="Agregar tareas" onClick={()=>navigate('/tasks/add', {replace:true})} type="button" className="btn-dark m-4" />
-      </div>  
-        
-    )
-}
+          );
+        })}
+      </div>
+      <Button
+        text="Agregar tareas"
+        onClick={() => navigate("/tasks/add", { replace: true })}
+        type="button"
+        className="btn-dark m-4"
+      />
+    </div>
+  );
+};
 
-
-
-export { ViewTasks }
+export { ViewTasks };
