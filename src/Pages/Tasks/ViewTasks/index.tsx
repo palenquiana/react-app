@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { tasksApi } from "../../../Api";
+import { tasksApi } from "../../../Api/tasks";
 import { Button, Card, Layout } from "../../../Components";
-import { Task } from "../type-task";
+import { Task } from "../../../Type";
 import "../../../Assets/styles.css";
 
 const ViewTasks = () => {

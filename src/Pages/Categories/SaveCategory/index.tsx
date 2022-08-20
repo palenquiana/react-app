@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { categoriesApi } from "../../../Api/categories";
 import { Button } from "../../../Components";
@@ -12,13 +12,13 @@ const SaveCategory = () => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     slug
-      ? categoriesApi.saveCategory(category, "PATCH")
-      : categoriesApi.saveCategory(category, "POST");
+      ? categoriesApi.save(category, "PATCH")
+      : categoriesApi.save(category, "POST");
   };
 
   return (
     <div className="container card card-form primary-form p-4">
-      <h3 className="text-center"></h3>
+      <h3 className="text-center">Card</h3>
       <form onSubmit={handleSubmit}>
         <div className="d-block flex-column container align-items-center">
           <div className="flex-column">
