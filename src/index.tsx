@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Navbar } from './Components';
-import { ViewTasks, AddTask, EditTask } from './Pages';
+import { ViewTasks, AddTask, EditTask, Login, Register } from './Pages';
 import { AddCategory, EditCategory, ViewCategories } from './Pages/Categories';
 import { ViewUser,AddUser,EditUser } from './Pages' 
 
@@ -12,7 +12,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path="/" element={<App />}> 
         <Route path='' element={<Outlet />}> 
@@ -32,6 +31,15 @@ root.render(
           <Route path='add' element={<AddUser />} /> 
           <Route path='edit' element={<EditUser />} /> 
         </Route>
+
+        <Route path="login" element={<Outlet />}> 
+          <Route index element={<Login />}/>
+        </Route>
+
+        <Route path="register" element={<Outlet />}> 
+          <Route index element={<Register />}/>
+        </Route>
+
       </Route>
     </Routes>
   </BrowserRouter>

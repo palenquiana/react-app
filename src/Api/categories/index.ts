@@ -1,6 +1,7 @@
+import { Category } from "../../Pages/Categories/type-category"
 import { mapToArray } from "../helpers"
 
-const add = async (newCategory: any)=>{
+const add = async (newCategory: Category)=>{
     const option: RequestInit = {
     method: 'POST',
     body: JSON.stringify(newCategory)
@@ -8,7 +9,7 @@ const add = async (newCategory: any)=>{
    await fetch('https://react-app-29176-default-rtdb.firebaseio.com/categories.json',option)
 }
 
-const remove = async (category: any) => {
+const remove = async (category: Category) => {
     const option = {
         method: 'DELETE',
         headers: {
@@ -28,7 +29,7 @@ const getAll = async () => {
   }
 
 
-const modify = async (category: any, modifiedCategory: any) => {
+const modify = async (category: Category, modifiedCategory: Category) => {
   const option = {
     method: 'PATCH',
     headers: {

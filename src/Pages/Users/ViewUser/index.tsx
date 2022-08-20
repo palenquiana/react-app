@@ -1,13 +1,15 @@
-import React from 'react';
-import { AddUser } from '../Add';
+import React from "react";
+import { Layout } from "../../../Components";
+import { AddUser } from "../Add";
 
 const ViewUser = () => {
+  return (
+    <>
+      <Layout page="users">
+        <AddUser />
+      </Layout>
+    </>
+  );
+};
 
-    return (
-        <div className="page users">
-            <AddUser />
-        </div>
-    )
-}
-
-export { ViewUser }
+export { ViewUser };
