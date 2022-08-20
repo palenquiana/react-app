@@ -1,7 +1,12 @@
 import React from "react";
+import { Layout } from "../../../Components";
 
 const ViewUser = () => {
-  return <div className="page users"></div>;
+  return (
+    <>
+      <Layout page="users">Hola</Layout>
+    </>
+  );
 };
 
 export { ViewUser };
