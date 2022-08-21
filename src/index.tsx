@@ -5,6 +5,7 @@ import { Navbar } from "./Components";
 import { ViewTasks } from "./Pages";
 import { ViewCategories } from "./Pages/Categories";
 import { ViewUser } from "./Pages";
+import { SaveCategory } from "./Pages/Categories/SaveCategory";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,6 +21,7 @@ root.render(
 
         <Route path="categories" element={<Outlet />}>
           <Route index element={<ViewCategories />} />
+          <Route path="save/:id" element={<SaveCategory />} />
         </Route>
 
         <Route path="user" element={<Outlet />}>

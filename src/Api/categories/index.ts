@@ -1,4 +1,4 @@
-import { Category } from "../../Type";
+import { Category, SaveCategory } from "../../Type";
 import { mapToArray } from "../helpers";
 
 const add = async (newCategory: any) => {
@@ -34,16 +34,16 @@ const getAll = async () => {
   return mapToArray(data);
 };
 
-const saveCategory = async (category: Category | undefined, slug: string) => {
+const saveCategory = async (category: SaveCategory, id: string | undefined) => {
   const option = {
-    method: slug ? "PATCH" : "POST",
+    method: id ? "PATCH" : "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(category),
   };
   await fetch(
-    `https://react-app-29176-default-rtdb.firebaseio.com/categories/${category}.json`,
+    `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`,
     option
   );
 };
