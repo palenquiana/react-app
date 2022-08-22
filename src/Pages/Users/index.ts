@@ -1,2 +1,1 @@
-export { ViewUser } from './ViewUser'
-export { AddEditUser } from './Form'
+export { ViewUser } from "./ViewUser";
