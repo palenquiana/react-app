@@ -28,7 +28,7 @@ const AddEditTask = () => {
               <label htmlFor="title" className="fw-bold">
                 Título
               </label>
-              <input
+              {/* <input
                 type="text"
                 className="form-control"
                 onChange={(e) =>
@@ -69,7 +69,7 @@ const AddEditTask = () => {
                     description: e.target.value,
                   }))
                 }
-              ></textarea>
+              ></textarea> */}
             </div>
             <div>
               <select name="catOp" id="">

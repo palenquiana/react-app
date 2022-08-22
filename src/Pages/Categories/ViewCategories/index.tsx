@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { categoriesApi } from "../../../Api/categories";
 import { Button, Layout } from "../../../Components";
-import { Category } from "../type-category";
+import { Category } from "../../../Type";
 
 const ViewCategories = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ViewCategories = () => {
           <div className="d-flex flex-row-reverse">
             <Button
               text="Agregar categoría"
-              onClick={() => navigate("/categories/add", { replace: true })}
+              onClick={() => navigate("/categories/save", { replace: true })}
               type="button"
               className="btn-dark m-2"
             />
@@ -32,7 +32,7 @@ const ViewCategories = () => {
               {categories.map((category) => {
                 return (
                   <>
-                    <tr>
+                    <tr key={category.id}>
                       <td>{category.name}</td>
                       <td>
                         <Button
@@ -40,7 +40,9 @@ const ViewCategories = () => {
                           text="Editar"
                           type="button"
                           onClick={() =>
-                            navigate(`/categories/edit/`, { replace: true })
+                            navigate(`/categories/save/${category.id}`, {
+                              replace: true,
+                            })
                           }
                         />
                       </td>
