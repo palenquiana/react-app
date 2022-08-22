@@ -1,34 +1,38 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button } from "../../../Components";
-
-import { categoriesApi, mapToArray } from "../../../Api";
+import { categoriesApi, mapToArray, tasksApi } from "../../../Api";
 import { Select } from "../Select";
-import { Task } from "../../../Type";
+import { InitialTask, Task } from "../../../Type";
+import { useParams } from "react-router-dom";
 
-const AddEditTask = () => {
-  // const cat: [] = [];
+const SaveTask = () => {
+  const { id } = useParams();
+  const initialData = { title: "" };
 
-  // const getData = async () => {
-  //   const reponse = await getCategories();
-  //   const data = mapToArray(reponse);
-  //   data.push(cat);
-  //   return data;
-  // };
-  // getData();
+  const [task, setTask] = useState<InitialTask>(initialData);
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    tasksApi.save(task, id);
+  };
 
-  const [task, setTask] = useState<Task>();
+  const getCat: [] = [];
+  useEffect(() => {
+    categoriesApi.getAll().then((response) => response.push(getCat));
+  }, []);
 
   return (
     <>
       <div className="card card-form primary-form container p-1">
-        <h3 className="text-center">Card</h3>
-        <form>
+        <h3 className="text-center">
+          {id ? <>Editar tarea</> : <>Agregar tarea</>}
+        </h3>
+        <form onSubmit={handleSubmit}>
           <div className="d-flex flex-column align-items-center ">
             <div>
               <label htmlFor="title" className="fw-bold">
                 Título
               </label>
-              {/* <input
+              <input
                 type="text"
                 className="form-control"
                 onChange={(e) =>
@@ -59,7 +63,7 @@ const AddEditTask = () => {
                 Descripción
               </label>
               <textarea
-                name=""
+                name="description"
                 id=""
                 placeholder="Agregá una descripción"
                 className="form-control"
@@ -69,11 +73,14 @@ const AddEditTask = () => {
                     description: e.target.value,
                   }))
                 }
-              ></textarea> */}
+              ></textarea>
             </div>
             <div>
               <select name="catOp" id="">
-                <option value=""></option>
+                {getCat.map(({ name }) => {
+                  console.log(name);
+                  return <option value={name}></option>;
+                })}
               </select>
             </div>
 
@@ -104,10 +111,14 @@ const AddEditTask = () => {
                                 })} */}
             </div>
           </div>
-          <Button className="" text="Agregar" type="submit"></Button>
+          <Button
+            className=""
+            text={id ? "Editar" : "Agregar"}
+            type="submit"
+          ></Button>
         </form>
       </div>
     </>
   );
 };
-export { AddEditTask };
+export { SaveTask };

@@ -27,7 +27,7 @@ const ViewTasks = () => {
           <div className="d-flex flex-row-reverse">
             <Button
               text="Agregar tarea"
-              onClick={() => navigate("/tasks/add", { replace: true })}
+              onClick={() => navigate("/save", { replace: true })}
               type="button"
               className="btn-dark m-2"
             />
@@ -52,7 +52,7 @@ const ViewTasks = () => {
                     <Button
                       text="Editar"
                       onClick={() =>
-                        navigate(`/tasks/edit/${idDB}`, { replace: true })
+                        navigate(`/save/${idDB}`, { replace: true })
                       }
                       type="button"
                       className="btn-dark m-2"

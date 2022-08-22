@@ -15,6 +15,7 @@ export type Task = {
   state?: "pending" | "doing" | "done";
   idDB: string;
 };
+export type InitialTask = Omit<Task, "idDB">;
 
 export type User = {
   name: string;
