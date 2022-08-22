@@ -1,18 +1,7 @@
-import { Category, SaveCategory } from "../../Type";
+import { Category, InitialCategory } from "../../Type";
 import { mapToArray } from "../helpers";
 
-const add = async (newCategory: any) => {
-  const option: RequestInit = {
-    method: "POST",
-    body: JSON.stringify(newCategory),
-  };
-  await fetch(
-    "https://react-app-29176-default-rtdb.firebaseio.com/categories.json",
-    option
-  );
-};
-
-const remove = async (category: any) => {
+const remove = async (category: Category) => {
   const option = {
     method: "DELETE",
     headers: {
@@ -34,7 +23,7 @@ const getAll = async () => {
   return mapToArray(data);
 };
 
-const save = async (category: SaveCategory, id: string | undefined) => {
+const save = async (category: InitialCategory, id: string | undefined) => {
   const option = {
     method: id ? "PATCH" : "POST",
     headers: {
@@ -43,9 +32,11 @@ const save = async (category: SaveCategory, id: string | undefined) => {
     body: JSON.stringify(category),
   };
   await fetch(
-    `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`,
+    id
+      ? `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`
+      : `https://react-app-29176-default-rtdb.firebaseio.com/categories.json`,
     option
   );
 };
 
-export const categoriesApi = { add, getAll, save, remove };
+export const categoriesApi = { getAll, save, remove };

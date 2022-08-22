@@ -19,6 +19,7 @@ root.render(
 
         <Route path="categories" element={<Outlet />}>
           <Route index element={<ViewCategories />} />
+          <Route path="save" element={<SaveCategory />} />
           <Route path="save/:id" element={<SaveCategory />} />
         </Route>
 
