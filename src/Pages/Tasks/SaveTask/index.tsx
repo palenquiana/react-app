@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Button } from "../../../Components";
 
-import { getCategories, mapToArray } from "../../../Api";
+import { categoriesApi, mapToArray } from "../../../Api";
 import { Select } from "../Select";
 import { Task } from "../../../Type";
 
@@ -21,7 +21,7 @@ const AddEditTask = () => {
   return (
     <>
       <div className="card card-form primary-form container p-1">
-        <h3 className="text-center"></h3>
+        <h3 className="text-center">Card</h3>
         <form>
           <div className="d-flex flex-column align-items-center ">
             <div>

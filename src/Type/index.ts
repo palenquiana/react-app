@@ -4,7 +4,7 @@ export type Category = {
   slug?: string;
 };
 
-export type SaveCategory = Omit<Category, "id">;
+export type InitialCategory = Omit<Category, "id">;
 
 export type Task = {
   title: string;

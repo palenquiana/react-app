@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import App from "./App";
-import { Navbar } from "./Components";
-import { ViewTasks } from "./Pages";
+import { Login, Register, ViewTasks } from "./Pages";
 import { ViewCategories } from "./Pages/Categories";
 import { ViewUser } from "./Pages";
 import { SaveCategory } from "./Pages/Categories/SaveCategory";
@@ -12,7 +11,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="" element={<Outlet />}>
@@ -26,6 +24,14 @@ root.render(
 
         <Route path="user" element={<Outlet />}>
           <Route index element={<ViewUser />} />
+        </Route>
+
+        <Route path="login" element={<Outlet />}>
+          <Route index element={<Login />} />
+        </Route>
+
+        <Route path="register" element={<Outlet />}>
+          <Route index element={<Register />} />
         </Route>
       </Route>
     </Routes>

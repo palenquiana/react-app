@@ -34,7 +34,7 @@ const getAll = async () => {
   return mapToArray(data);
 };
 
-const saveCategory = async (category: SaveCategory, id: string | undefined) => {
+const save = async (category: SaveCategory, id: string | undefined) => {
   const option = {
     method: id ? "PATCH" : "POST",
     headers: {
@@ -48,4 +48,4 @@ const saveCategory = async (category: SaveCategory, id: string | undefined) => {
   );
 };
 
-export const categoriesApi = { add, getAll, saveCategory, remove };
+export const categoriesApi = { add, getAll, save, remove };

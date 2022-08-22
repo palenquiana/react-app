@@ -1,20 +1,17 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { categoriesApi } from "../../../Api/categories";
 import { Button } from "../../../Components";
-import { Category, SaveCategory } from "../../../Type";
-
-const inicialState: SaveCategory = { name: "", slug: "" };
+import { Category, InitialCategory } from "../../../Type";
 
 const SaveCategory = () => {
   const { id } = useParams();
 
-  const [category, setCategory] = useState<SaveCategory>(inicialState);
+  const [category, setCategory] = useState<InitialCategory>();
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-    categoriesApi.saveCategory(category, id);
+    categoriesApi.save(category, id);
   };
 
   return (
