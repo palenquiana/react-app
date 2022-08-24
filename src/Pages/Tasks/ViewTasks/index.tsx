@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { tasksApi } from "../../../Api/tasks";
 import { Button, Card, Layout } from "../../../Components";
-import { Task } from "../../../Type";
 import "../../../Assets/styles.css";
+import { useSetTasks } from "../../../Hooks/setTasks";
 
 const ViewTasks = () => {
   const filter = () => {
@@ -12,11 +10,7 @@ const ViewTasks = () => {
 
   const navigate = useNavigate();
 
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(() => {
-    tasksApi.getAll().then((response) => setTasks(response));
-  }, []);
+  const { removeAndUpdate, data } = useSetTasks();
 
   // if (!tasks) return <>Cargando...</>;
 
@@ -39,21 +33,32 @@ const ViewTasks = () => {
             />
           </div>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {tasks.map(({ description, category, user, idDB, title }) => {
+            {data.map((task) => {
               return (
-                <div className="col" key={idDB}>
-                  <Card className="task" key={idDB} id={idDB}>
+                <div className="col" key={task.id}>
+                  <Card className="task" key={task.id} id={task.id}>
                     <ul className="list-group">
-                      <li className="list-group-item">{title}</li>
-                      <li className="list-group-item">{description}</li>
-                      <li className="list-group-item">Categoria: {category}</li>
-                      <li className="list-group-item">Usuario: {user}</li>
+                      <li className="list-group-item">{task.title}</li>
+                      <li className="list-group-item">{task.description}</li>
+                      <li className="list-group-item">
+                        Categoria: {task.category}
+                      </li>
+                      <li className="list-group-item">Usuario: {task.user}</li>
                     </ul>
                     <Button
                       text="Editar"
                       onClick={() =>
-                        navigate(`/tasks/edit/${idDB}`, { replace: true })
+                        navigate(`/tasks/edit/${task.id}`, { replace: true })
                       }
+                      type="button"
+                      className="btn-dark m-2"
+                    ></Button>
+
+                    <Button
+                      text="Eliminar"
+                      onClick={() => {
+                        removeAndUpdate(task);
+                      }}
                       type="button"
                       className="btn-dark m-2"
                     ></Button>

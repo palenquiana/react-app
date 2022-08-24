@@ -19,7 +19,7 @@ const remove = async (task: Task) => {
     body: JSON.stringify(task),
   };
   await fetch(
-    `https://react-app-29176-default-rtdb.firebaseio.com/tasks/${task}.json`,
+    `https://react-app-29176-default-rtdb.firebaseio.com/tasks/${task.id}.json`,
     option
   );
 };
@@ -44,7 +44,7 @@ const modify = async (task: Task, modifiedTask: Task) => {
     body: JSON.stringify(modifiedTask),
   };
   await fetch(
-    `https://react-app-29176-default-rtdb.firebaseio.com/tasks/${task}.json`,
+    `https://react-app-29176-default-rtdb.firebaseio.com/tasks/${task.id}.json`,
     option
   );
 };

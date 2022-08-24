@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { categoriesApi } from "../../../Api/categories";
 import { Button } from "../../../Components";
-import { Category, InitialCategory } from "../../../Type";
+import { InitialCategory } from "../../../Type";
 
 const SaveCategory = () => {
   const { id } = useParams();
 
-  const [category, setCategory] = useState<InitialCategory>();
+  const [category, setCategory] = useState<InitialCategory>({ name: "" });
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();

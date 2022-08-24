@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { categoriesApi } from "../../../Api/categories";
 import { Button, Layout } from "../../../Components";
-import { Category } from "../type-category";
+import { Category } from "../../../Type";
 
 const ViewCategories = () => {
   const navigate = useNavigate();

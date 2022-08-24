@@ -31,12 +31,12 @@ const AddEditTask = () => {
               <input
                 type="text"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    title: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     title: e.target.value,
+                //   }))
+                // }
               />
             </div>
             <div>
@@ -46,12 +46,12 @@ const AddEditTask = () => {
               <input
                 type="date"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    date: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     date: e.target.value,
+                //   }))
+                // }
               />
             </div>
             <div>
@@ -63,12 +63,12 @@ const AddEditTask = () => {
                 id=""
                 placeholder="Agregá una descripción"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    description: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     description: e.target.value,
+                //   }))
+                // }
               ></textarea>
             </div>
             <div>
@@ -98,10 +98,9 @@ const AddEditTask = () => {
 
             <div>
               {/* <Select name="catOp" id="selecCat" optionMap={cat} /> */}
-
-              {/* {data.map(({op})=>{
-                                    return(<option value={data} key={op}></option>)
-                                })} */}
+              {/* {data.map(({ op }) => {
+                return <option value={data} key={op}></option>;
+              })} */}
             </div>
           </div>
           <Button className="" text="Agregar" type="submit"></Button>
