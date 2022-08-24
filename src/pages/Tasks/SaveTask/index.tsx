@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
-import { Button } from "../../../Components";
+import { Button } from "../../../components";
 
-import { categoriesApi, mapToArray } from "../../../Api";
+import { categoriesApi, mapToArray } from "../../../api";
 import { Select } from "../Select";
-import { Task } from "../../../Type";
+import { Task } from "../../../types";
 
 const AddEditTask = () => {
   // const cat: [] = [];

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { categoriesApi } from "../../../Api/categories";
-import { Button, Layout } from "../../../Components";
-import { Category } from "../../../Type";
+import { categoriesApi } from "../../../api/categories";
+import { Button, Layout } from "../../../components";
+import { Category } from "../../../types";
 
 const ViewCategories = () => {
   const navigate = useNavigate();

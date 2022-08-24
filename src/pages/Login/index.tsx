@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Layout } from "../../Components";
+import { Button, Layout } from "../../components";
 
 const Login = () => {
   const navigate = useNavigate();

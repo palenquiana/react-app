@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import App from "./App";
-import { Login, Register, ViewTasks } from "./Pages";
-import { ViewCategories } from "./Pages/Categories";
-import { ViewUser } from "./Pages";
-import { SaveCategory } from "./Pages/Categories/SaveCategory";
+import { Login, Register, ViewTasks } from "./pages";
+import { ViewCategories } from "./pages/Categories";
+import { ViewUser } from "./pages";
+import { SaveCategory } from "./pages/Categories/SaveCategory";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

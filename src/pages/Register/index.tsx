@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Layout } from "../../Components";
+import { Button, Layout } from "../../components";
 
 const Register = () => {
   return (
