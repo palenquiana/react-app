@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { Button } from "../../../Components";
-import { categoriesApi, mapToArray, tasksApi } from "../../../Api";
+import { categoriesApi, mapToArray, tasksApi, usersApi } from "../../../Api";
 import { Select } from "../Select";
-import { InitialTask, Task } from "../../../Type";
+import { Category, InitialTask, Task, User } from "../../../Type";
 import { useParams } from "react-router-dom";
 
 const SaveTask = () => {
@@ -15,110 +15,153 @@ const SaveTask = () => {
     tasksApi.save(task, id);
   };
 
-  const getCat: [] = [];
+  const [getCat, setCat] = useState<Category[]>([]);
+  const [getUser, setUser] = useState<User[]>([]);
   useEffect(() => {
-    categoriesApi.getAll().then((response) => response.push(getCat));
+    categoriesApi.getAll().then((response) => setCat(response));
+    usersApi.getAll().then((response) => setUser(response));
   }, []);
 
   return (
-    <>
-      <div className="card card-form primary-form container p-1">
-        <h3 className="text-center">
-          {id ? <>Editar tarea</> : <>Agregar tarea</>}
-        </h3>
-        <form onSubmit={handleSubmit}>
-          <div className="d-flex flex-column align-items-center ">
+    <div className="card card-form primary-form container p-1">
+      <h3 className="text-center">
+        {id ? <>Editar tarea</> : <>Agregar tarea</>}
+      </h3>
+      <form onSubmit={handleSubmit}>
+        <div className="d-flex flex-column align-items-center ">
+          <div>
+            <label htmlFor="title" className="fw-bold">
+              Título
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              onChange={(e) =>
+                setTask((prevState) => ({
+                  ...prevState,
+                  title: e.target.value,
+                }))
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="date" className="fw-bold">
+              Fecha
+            </label>
+            <input
+              type="date"
+              className="form-control"
+              onChange={(e) =>
+                setTask((prevState) => ({
+                  ...prevState,
+                  date: e.target.value,
+                }))
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="description" className="fw-bold">
+              Descripción
+            </label>
+            <textarea
+              name="description"
+              id=""
+              placeholder="Agregá una descripción"
+              className="form-control"
+              onChange={(e) =>
+                setTask((prevState) => ({
+                  ...prevState,
+                  description: e.target.value,
+                }))
+              }
+            ></textarea>
+          </div>
+          <div>
+            <select name="catOp" id="">
+              {getCat.map(({ name, id }) => {
+                return (
+                  <option value={name} key={id}>
+                    {name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="" className="fw-bold">
+              Estado
+            </label>
             <div>
-              <label htmlFor="title" className="fw-bold">
-                Título
-              </label>
               <input
-                type="text"
-                className="form-control"
-                onChange={(e) =>
+                type="radio"
+                name="state"
+                id="pending"
+                className="me-1"
+                value="pending"
+                onChange={() => {
                   setTask((prevState) => ({
                     ...prevState,
-                    title: e.target.value,
-                  }))
-                }
+                    state: "pending",
+                  }));
+                }}
               />
+              <label htmlFor="state">Pendiente</label>
             </div>
+
             <div>
-              <label htmlFor="date" className="fw-bold">
-                Fecha
-              </label>
               <input
-                type="date"
-                className="form-control"
-                onChange={(e) =>
+                type="radio"
+                name="state"
+                id="inProcess"
+                className="me-1"
+                value="doing"
+                onChange={() => {
                   setTask((prevState) => ({
                     ...prevState,
-                    date: e.target.value,
-                  }))
-                }
+                    state: "doing",
+                  }));
+                }}
               />
+              <label htmlFor="state">En proceso</label>
             </div>
             <div>
-              <label htmlFor="description" className="fw-bold">
-                Descripción
-              </label>
-              <textarea
-                name="description"
-                id=""
-                placeholder="Agregá una descripción"
-                className="form-control"
-                onChange={(e) =>
+              <input
+                type="radio"
+                name="state"
+                id="done"
+                className="me-1"
+                value="done"
+                onChange={() => {
                   setTask((prevState) => ({
                     ...prevState,
-                    description: e.target.value,
-                  }))
-                }
-              ></textarea>
-            </div>
-            <div>
-              <select name="catOp" id="">
-                {getCat.map(({ name }) => {
-                  console.log(name);
-                  return <option value={name}></option>;
-                })}
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="" className="fw-bold">
-                Estado
-              </label>
-              <div>
-                <input type="radio" name="pendiente" id="" className="me-1" />
-                <label htmlFor="pendiente">Pendiente</label>
-              </div>
-
-              <div>
-                <input type="radio" name="enProceso" id="" className="me-1" />
-                <label htmlFor="enProceso">En proceso</label>
-              </div>
-              <div>
-                <input type="radio" name="realizado" id="" className="me-1" />
-                <label htmlFor="realizado">Realizado</label>
-              </div>
-            </div>
-
-            <div>
-              {/* <Select name="catOp" id="selecCat" optionMap={cat} /> */}
-
-              {/* {data.map(({op})=>{
-                                    return(<option value={data} key={op}></option>)
-                                })} */}
+                    state: "done",
+                  }));
+                }}
+              />
+              <label htmlFor="state">Realizado</label>
             </div>
           </div>
-          <Button
-            className=""
-            text={id ? "Editar" : "Agregar"}
-            type="submit"
-          ></Button>
-        </form>
-      </div>
-    </>
+
+          <div>
+          {/* <select name="userOp" id="">
+              {getUser.map(({ name, id }) => {
+                return (
+                  <option value={name} key={id}>
+                    {name}
+                  </option>
+                );
+              })}
+            </select> */}
+          </div>
+        </div>
+        <Button
+          className=""
+          text={id ? "Editar" : "Agregar"}
+          type="submit"
+        ></Button>
+      </form>
+    </div>
   );
 };
 export { SaveTask };
