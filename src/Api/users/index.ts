@@ -1,45 +1,42 @@
-import { mapToArray } from "../helpers"
-
-const add = async (newUser: any)=>{
-    const option: RequestInit = {
-        method: 'POST',
-        body: JSON.stringify(newUser)
-    }
-   await fetch('https://react-app-29176-default-rtdb.firebaseio.com/users.json',option)
-}
+import { InitialUser } from "../../Type";
+import { mapToArray } from "../helpers";
 
 const remove = async (user: any) => {
-    const option = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    }
-   await fetch(`https://react-app-29176-default-rtdb.firebaseio.com/users/${user}.json`,option)
-}
-
-
+  const option = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+  await fetch(
+    `https://react-app-29176-default-rtdb.firebaseio.com/users/${user}.json`,
+    option
+  );
+};
 
 const getAll = async () => {
-    const response = await fetch('https://react-app-29176-default-rtdb.firebaseio.com/users.json');
-    const data = await response.json();
-    return mapToArray(data);    
-  }
+  const response = await fetch(
+    "https://react-app-29176-default-rtdb.firebaseio.com/users.json"
+  );
+  const data = await response.json();
+  return mapToArray(data);
+};
 
-
-const modify = async (user: any, modifiedUser: any) => {
+const save = async (user: InitialUser, id: string | undefined) => {
   const option = {
-    method: 'PATCH',
+    method: id ? "PATCH" : "POST",
     headers: {
-        'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(modifiedUser)
-  }
-  await fetch(`https://react-app-29176-default-rtdb.firebaseio.com/users/${user}.json`,option)
-}
+    body: JSON.stringify(user),
+  };
+  await fetch(
+    id
+      ? `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`
+      : `https://react-app-29176-default-rtdb.firebaseio.com/categories.json`,
+    option
+  );
+};
 
-
-
-
-export const usersApi = { add, getAll, modify, remove }
+export const usersApi = { getAll, remove, save };

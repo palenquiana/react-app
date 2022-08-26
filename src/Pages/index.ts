@@ -1,5 +1,5 @@
 export { ViewTasks, SaveTask } from "./Tasks";
-export { ViewUser } from "./Users";
+export { ViewUser, SaveUser } from "./Users";
 export { Register } from "./Register";
 export { Login } from "./Login";
 export { ViewCategories } from "./Categories";
