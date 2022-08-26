@@ -1,36 +1,37 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-} 
- body{
-    margin: 0px;
-    background-color: rgb(232, 252, 246);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  background-color: rgb(232, 252, 246);
 }
 
 .primary-color {
-    background-color: #722ef9;
-    color: #cbb2fd;
+  background-color: #722ef9;
+  color: #cbb2fd;
 }
 
 .primary-color-text {
-    color: #f8f9fa;
+  color: #f8f9fa;
 }
-.primary-form{ 
-    background-color: #F1EAEA;
-
+.primary-form {
+  background-color: #f1eaea;
 }
-.card-form{
-    max-width: 500px;
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
+.card-form {
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .task {
-    border: 1px solid rgb(185, 185, 185)
+  border: 1px solid rgb(185, 185, 185);
 }
 
 .card-login {
-    max-width: 600px;
-    margin: auto;
-    margin-top: 100px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 100px;
 }
