@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { tasksApi } from "../../../Api/tasks";
 import { Button, Card, Layout } from "../../../Components";
-import { Task } from "../../../Type";
-import "../../../Assets/styles.css";
+import "../../../assets/styles.css";
+import { useTasks } from "../../../hooks/useTasks";
 
 const ViewTasks = () => {
   const filter = () => {
@@ -12,13 +10,9 @@ const ViewTasks = () => {
 
   const navigate = useNavigate();
 
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { remove, tasks, isLoading } = useTasks();
 
-  useEffect(() => {
-    tasksApi.getAll().then((response) => setTasks(response));
-  }, []);
-
-  // if (!tasks) return <>Cargando...</>;
+  if (isLoading) return <>Cargando...</>;
 
   return (
     <>
@@ -39,10 +33,10 @@ const ViewTasks = () => {
             />
           </div>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {tasks.map(({ description, category, user, idDB, title }) => {
+            {tasks.map(({ description, category, user, id, title }) => {
               return (
-                <div className="col" key={idDB}>
-                  <Card className="task" key={idDB} id={idDB}>
+                <div className="col" key={id}>
+                  <Card className="task" key={id} id={id}>
                     <ul className="list-group">
                       <li className="list-group-item">{title}</li>
                       <li className="list-group-item">{description}</li>
@@ -51,9 +45,16 @@ const ViewTasks = () => {
                     </ul>
                     <Button
                       text="Editar"
-                      onClick={() =>
-                        navigate(`/save/${idDB}`, { replace: true })
-                      }
+                      onClick={() => navigate(`/save/${id}`, { replace: true })}
+                      type="button"
+                      className="btn-dark m-2"
+                    ></Button>
+
+                    <Button
+                      text="Eliminar"
+                      onClick={() => {
+                        remove(id);
+                      }}
                       type="button"
                       className="btn-dark m-2"
                     ></Button>

@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import { Button } from "../../../Components";
-import { categoriesApi, mapToArray, tasksApi, usersApi } from "../../../Api";
+
+import { categoriesApi, tasksApi, usersApi } from "../../../Api";
 import { Select } from "../Select";
-import { Category, InitialTask, Task, User } from "../../../Type";
+import { Category, InitialTask, Task, User } from "../../../types";
 import { useParams } from "react-router-dom";
 
 const SaveTask = () => {
@@ -37,12 +38,12 @@ const SaveTask = () => {
               <input
                 type="text"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    title: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     title: e.target.value,
+                //   }))
+                // }
               />
             </div>
             <div>
@@ -52,12 +53,12 @@ const SaveTask = () => {
               <input
                 type="date"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    date: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     date: e.target.value,
+                //   }))
+                // }
               />
             </div>
             <div>
@@ -69,12 +70,12 @@ const SaveTask = () => {
                 id=""
                 placeholder="Agregá una descripción"
                 className="form-control"
-                onChange={(e) =>
-                  setTask((prevState) => ({
-                    ...prevState,
-                    description: e.target.value,
-                  }))
-                }
+                // onChange={(e) =>
+                //   setTask((prevState) => ({
+                //     ...prevState,
+                //     description: e.target.value,
+                //   }))
+                // }
               ></textarea>
             </div>
           </div>

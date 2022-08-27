@@ -7,13 +7,13 @@ export type Category = {
 export type InitialCategory = Omit<Category, "id">;
 
 export type Task = {
+  id: string;
   title: string;
   date?: string;
   description?: string;
   user?: string;
   category?: string;
   state?: "pending" | "doing" | "done";
-  idDB: string;
 };
 export type InitialTask = Omit<Task, "idDB">;
 
