@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { useParams } from "react-router-dom";
-import { usersApi } from "../../../Api";
-import { Button } from "../../../Components";
-import { InitialUser } from "../../../Type";
+import { usersApi } from "../../../api";
+import { Button } from "../../../components";
+import { InitialUser } from "../../../types";
 
 const SaveUser = () => {
   const { id } = useParams();

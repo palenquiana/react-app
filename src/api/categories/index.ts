@@ -1,19 +1,19 @@
 import { Category, InitialCategory } from "../../types";
 import { mapToArray } from "../helpers";
 
-const remove = async (category: Category) => {
+const remove = async (id: string) => {
   const option = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(category),
-  };
-  await fetch(
-    `https://react-app-29176-default-rtdb.firebaseio.com/categories/${category}.json`,
-    option
-  );
-};
+    method: "DELETE"};
+  try {
+    const response = await fetch(
+      `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`,
+      option
+    );
+    return response.ok;
+  } catch (err) {
+    return undefined;
+  }
+}
 
 const getAll = async () => {
   const response = await fetch(
@@ -23,7 +23,7 @@ const getAll = async () => {
   return mapToArray(data);
 };
 
-const save = async (category: InitialCategory, id: string | undefined) => {
+const save = async (category?: InitialCategory, id?: string | undefined) => {
   const option = {
     method: id ? "PATCH" : "POST",
     headers: {

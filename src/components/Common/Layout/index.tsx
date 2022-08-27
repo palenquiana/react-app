@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Main } from "../Main";
+
 import { Navbar } from "../Navbar";
 
 type Props = {

@@ -1,14 +1,12 @@
-import { FC, useEffect, useState } from "react";
-import { Button } from "../../../Components";
-
-import { categoriesApi, tasksApi, usersApi } from "../../../Api";
-import { Select } from "../Select";
-import { Category, InitialTask, Task, User } from "../../../types";
+import { useEffect, useState } from "react";
+import { Button } from "../../../components";
+import { categoriesApi, tasksApi, usersApi } from "../../../api";
+import { Category, InitialTask, User } from "../../../types";
 import { useParams } from "react-router-dom";
 
 const SaveTask = () => {
   const { id } = useParams();
-  const initialData = { title: "" };
+  const initialData: InitialTask = { id: "", title: "" };
 
   const [task, setTask] = useState<InitialTask>(initialData);
   const handleSubmit = (e: { preventDefault: () => void }) => {

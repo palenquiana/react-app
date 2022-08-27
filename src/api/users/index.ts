@@ -1,4 +1,4 @@
-import { InitialUser } from "../../Type";
+import { InitialUser } from "../../types";
 import { mapToArray } from "../helpers";
 
 const remove = async (user: any) => {
