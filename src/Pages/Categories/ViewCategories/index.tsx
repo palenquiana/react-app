@@ -20,7 +20,7 @@ const ViewCategories = () => {
           <div className="d-flex flex-row-reverse">
             <Button
               text="Agregar categoría"
-              onClick={() => navigate("/categories/add", { replace: true })}
+              onClick={() => navigate("/categories/save", { replace: true })}
               type="button"
               className="btn-dark m-2"
             />
@@ -31,31 +31,31 @@ const ViewCategories = () => {
             <tbody>
               {categories.map((category) => {
                 return (
-                  <>
-                    <tr>
-                      <td>{category.name}</td>
-                      <td>
-                        <Button
-                          className="edit-category"
-                          text="Editar"
-                          type="button"
-                          onClick={() =>
-                            navigate(`/categories/edit/`, { replace: true })
-                          }
-                        />
-                      </td>
-                      <td>
-                        <Button
-                          className="remove-category"
-                          text="Eliminar"
-                          type="button"
-                          onClick={() =>
-                            navigate(`/categories/edit/`, { replace: true })
-                          }
-                        />
-                      </td>
-                    </tr>
-                  </>
+                  <tr key={category.id}>
+                    <td>{category.name}</td>
+                    <td>
+                      <Button
+                        className="edit-category"
+                        text="Editar"
+                        type="button"
+                        onClick={() =>
+                          navigate(`/categories/save/${category.id}`, {
+                            replace: true,
+                          })
+                        }
+                      />
+                    </td>
+                    <td>
+                      <Button
+                        className="remove-category"
+                        text="Eliminar"
+                        type="button"
+                        onClick={() =>
+                          navigate(`/categories/edit/`, { replace: true })
+                        }
+                      />
+                    </td>
+                  </tr>
                 );
               })}
             </tbody>

@@ -21,7 +21,7 @@ const ViewTasks = () => {
           <div className="d-flex flex-row-reverse">
             <Button
               text="Agregar tarea"
-              onClick={() => navigate("/tasks/add", { replace: true })}
+              onClick={() => navigate("/save", { replace: true })}
               type="button"
               className="btn-dark m-2"
             />
@@ -33,23 +33,19 @@ const ViewTasks = () => {
             />
           </div>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {data.map((task) => {
+            {data.map(({ description, category, user, id, title }) => {
               return (
-                <div className="col" key={task.id}>
-                  <Card className="task" key={task.id} id={task.id}>
+                <div className="col" key={id}>
+                  <Card className="task" key={id} id={id}>
                     <ul className="list-group">
-                      <li className="list-group-item">{task.title}</li>
-                      <li className="list-group-item">{task.description}</li>
-                      <li className="list-group-item">
-                        Categoria: {task.category}
-                      </li>
-                      <li className="list-group-item">Usuario: {task.user}</li>
+                      <li className="list-group-item">{title}</li>
+                      <li className="list-group-item">{description}</li>
+                      <li className="list-group-item">Categoria: {category}</li>
+                      <li className="list-group-item">Usuario: {user}</li>
                     </ul>
                     <Button
                       text="Editar"
-                      onClick={() =>
-                        navigate(`/tasks/edit/${task.id}`, { replace: true })
-                      }
+                      onClick={() => navigate(`/save/${id}`, { replace: true })}
                       type="button"
                       className="btn-dark m-2"
                     ></Button>
