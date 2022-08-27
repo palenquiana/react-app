@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Layout } from "../../../Components";
-import "../../../Assets/styles.css";
-import { useSetTasks } from "../../../Hooks/setTasks";
+import "../../../assets/styles.css";
+import { useTasks } from "../../../hooks/useTasks";
 
 const ViewTasks = () => {
   const filter = () => {
@@ -10,9 +10,9 @@ const ViewTasks = () => {
 
   const navigate = useNavigate();
 
-  const { removeAndUpdate, data } = useSetTasks();
+  const { remove, tasks, isLoading } = useTasks();
 
-  // if (!tasks) return <>Cargando...</>;
+  if (isLoading) return <>Cargando...</>;
 
   return (
     <>
@@ -33,7 +33,7 @@ const ViewTasks = () => {
             />
           </div>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {data.map(({ description, category, user, id, title }) => {
+            {tasks.map(({ description, category, user, id, title }) => {
               return (
                 <div className="col" key={id}>
                   <Card className="task" key={id} id={id}>
@@ -53,7 +53,7 @@ const ViewTasks = () => {
                     <Button
                       text="Eliminar"
                       onClick={() => {
-                        removeAndUpdate(task);
+                        remove(id);
                       }}
                       type="button"
                       className="btn-dark m-2"

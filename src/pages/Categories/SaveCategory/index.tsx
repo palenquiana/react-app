@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { categoriesApi } from "../../../Api/categories";
-import { Button } from "../../../Components";
-import { InitialCategory } from "../../../Type";
+import { categoriesApi } from "../../../api/categories";
+import { Button } from "../../../components";
+import { InitialCategory } from "../../../types";
 
 const SaveCategory = () => {
   const { id } = useParams();

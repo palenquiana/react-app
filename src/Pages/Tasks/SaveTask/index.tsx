@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import { Button } from "../../../Components";
-import { categoriesApi, mapToArray, tasksApi, usersApi } from "../../../Api";
+
+import { categoriesApi, tasksApi, usersApi } from "../../../Api";
 import { Select } from "../Select";
-import { Category, InitialTask, Task, User } from "../../../Type";
+import { Category, InitialTask, Task, User } from "../../../types";
 import { useParams } from "react-router-dom";
 
 const SaveTask = () => {

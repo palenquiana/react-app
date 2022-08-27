@@ -1,4 +1,4 @@
-import { Category, InitialCategory } from "../../Type";
+import { Category, InitialCategory } from "../../types";
 import { mapToArray } from "../helpers";
 
 const remove = async (category: Category) => {
@@ -34,7 +34,7 @@ const save = async (category: InitialCategory, id: string | undefined) => {
   await fetch(
     id
       ? `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`
-      : `https://react-app-29176-default-rtdb.firebaseio.com/categories.json`,
+      : "https://react-app-29176-default-rtdb.firebaseio.com/categories.json",
     option
   );
 };
