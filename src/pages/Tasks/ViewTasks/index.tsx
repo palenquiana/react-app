@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Layout } from "../../../Components";
+import { Button, Card, Layout } from "../../../components";
 import "../../../assets/styles.css";
 import { useTasks } from "../../../hooks/useTasks";
 

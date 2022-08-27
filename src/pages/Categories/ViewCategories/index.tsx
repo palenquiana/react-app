@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { categoriesApi } from "../../../api/categories";
 import { Button, Layout } from "../../../components";
-import { Category } from "../../../types";
+import { useCategories } from "../../../hooks/useCategories";
 
 const ViewCategories = () => {
   const navigate = useNavigate();
 
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    categoriesApi.getAll().then((response) => setCategories(response));
-  }, []);
+  const { get, remove, save, categories } = useCategories();
 
   return (
     <>
@@ -50,9 +44,7 @@ const ViewCategories = () => {
                         className="remove-category"
                         text="Eliminar"
                         type="button"
-                        onClick={() =>
-                          navigate(`/categories/edit/`, { replace: true })
-                        }
+                        onClick={() => remove(category.id)}
                       />
                     </td>
                   </tr>

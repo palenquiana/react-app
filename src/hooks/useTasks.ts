@@ -18,7 +18,7 @@ const useTasks = () => {
   };
 
   const save = (task: Task) => {
-    const resp = tasksApi.add(task);
+    // const resp = tasksApi.save(task);
 
     // if (resp) {
     //   get();

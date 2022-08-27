@@ -1,1 +1,2 @@
-export { ViewCategories } from "./ViewCategories";
+export { SaveCategory} from './SaveCategory'
+export { ViewCategories } from './ViewCategories'

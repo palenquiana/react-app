@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { usersApi } from "../../../Api";
-import { Button, Layout } from "../../../Components";
-import { User } from "../../../Type";
+import { usersApi } from "../../../api";
+import { Button, Layout } from "../../../components";
+import { User } from "../../../types";
 
 const ViewUser = () => {
   const navigate = useNavigate();
