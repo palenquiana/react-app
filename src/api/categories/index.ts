@@ -23,7 +23,16 @@ const getAll = async () => {
   return mapToArray(data);
 };
 
-const save = async (category?: InitialCategory, id?: string | undefined) => {
+
+const get = async (id:string) => {
+  const response = await fetch(
+    `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`
+  );
+  const data = await response.json();
+  return data;
+};
+
+const save = async (category: InitialCategory, id?: string) => {
   const option = {
     method: id ? "PATCH" : "POST",
     headers: {
@@ -32,11 +41,9 @@ const save = async (category?: InitialCategory, id?: string | undefined) => {
     body: JSON.stringify(category),
   };
   await fetch(
-    id
-      ? `https://react-app-29176-default-rtdb.firebaseio.com/categories/${id}.json`
-      : "https://react-app-29176-default-rtdb.firebaseio.com/categories.json",
+    `https://react-app-29176-default-rtdb.firebaseio.com/categories${id ? '/' + id : ''}.json`,
     option
   );
 };
 
-export const categoriesApi = { getAll, save, remove };
+export const categoriesApi = { getAll, save, remove, get };
