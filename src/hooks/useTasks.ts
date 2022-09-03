@@ -17,12 +17,12 @@ const useTasks = () => {
     setIsLoading(false);
   };
 
-  const save = (task: Task) => {
-    // const resp = tasksApi.save(task);
+  const save = async (task: Task) => {
+    const resp = await tasksApi.save(task);
 
-    // if (resp) {
-    //   get();
-    // }
+    if (resp !== undefined) {
+      get();
+    }
   };
 
   const remove = async (id: string) => {

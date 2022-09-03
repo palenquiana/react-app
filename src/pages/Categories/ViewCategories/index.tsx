@@ -5,7 +5,7 @@ import { useCategories } from "../../../hooks/useCategories";
 const ViewCategories = () => {
   const navigate = useNavigate();
 
-  const { get, remove, save, categories } = useCategories();
+  const { remove, categories } = useCategories();
 
   return (
     <>

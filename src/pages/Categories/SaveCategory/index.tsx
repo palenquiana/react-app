@@ -1,18 +1,32 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { categoriesApi } from "../../../api/categories";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
-import { InitialCategory } from "../../../types";
+import { useCategories } from "../../../hooks/useCategories";
+import { Category, InitialCategory } from "../../../types";
 
 const SaveCategory = () => {
   const { id } = useParams();
-  const initialData = { name: "" };
+  const navigate = useNavigate();
 
-  const [category, setCategory] = useState<InitialCategory>(initialData);
+  const { getItem, save } = useCategories();
+
+  const [category, setCategory] = useState<InitialCategory>({ name: "" });
+
+  useEffect(() => {
+    id &&
+      getItem(id).then((data) => {
+        if (data) {
+          const { id, ...rest } = data;
+          setCategory(rest);
+        }
+      });
+  }, []);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    categoriesApi.save(category, id);
+    save(category, id).then(() => {
+      navigate("/categories", { replace: true });
+    });
   };
 
   return (
@@ -58,9 +72,15 @@ const SaveCategory = () => {
           </div>
 
           <Button
-            className="btn"
+            className="btn-dark m-2"
             text={id ? "Editar" : "Agregar"}
             type="submit"
+          />
+          <Button
+            className="btn-dark m-2"
+            text="Cancelar"
+            type="button"
+            onClick={() => navigate("/categories", { replace: true })}
           />
         </div>
       </form>

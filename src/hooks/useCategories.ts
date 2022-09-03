@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { categoriesApi } from "../api";
-import { Category } from "../types";
+import { Category, InitialCategory } from "../types";
 
 
 const useCategories = () => {
     const [categories, setCategories] = useState<Category[]>([]);
+
 
 
 useEffect(() => {
@@ -16,14 +17,18 @@ useEffect(() => {
     setCategories(resp);
   };
 
-
-  const save = (id: string) => {
-    // const resp = categoriesApi.save(id);
-
-    // if (resp) {
-    //   get();
-    // }
+  const getItem = async (id:string) => {
+    const resp = await categoriesApi.get(id);
+    return resp;
   };
+
+
+  const save = async (category: InitialCategory, id?: string ) => {
+    
+    const resp = await categoriesApi.save(category, id);
+      get();
+  };
+
 
   const remove = async (id: string) => {
     const resp = await categoriesApi.remove(id);
@@ -35,7 +40,7 @@ useEffect(() => {
     }
   };
 
-  return { get, remove, save, categories}
+  return { get, getItem, remove, save, categories }
 }
 
 export { useCategories }
